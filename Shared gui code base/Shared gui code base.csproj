@@ -50,4 +50,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="AfterBuild">
+	<Exec Command="..\Doxygen\doxygen.exe doxconfig.ini" />
+  </Target>
 </Project>
