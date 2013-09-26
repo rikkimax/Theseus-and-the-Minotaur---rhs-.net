@@ -46,7 +46,7 @@ namespace TATM.sgcb
             {
                 // show the exit image
                 ImageSourceConverter c = new ImageSourceConverter();
-                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Resources.exit);
+                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Properties.Resources.exit);
             }
             else
             {
@@ -57,12 +57,12 @@ namespace TATM.sgcb
             if (withEntity == EntityType.Minotaur)
             {
                 ImageSourceConverter c = new ImageSourceConverter();
-                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Resources.minotaur);
+                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Properties.Resources.minotaur);
             }
             else if (withEntity == EntityType.Theseus)
             {
                 ImageSourceConverter c = new ImageSourceConverter();
-                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Resources.theseus);
+                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Properties.Resources.theseus);
             }
             else
             {
