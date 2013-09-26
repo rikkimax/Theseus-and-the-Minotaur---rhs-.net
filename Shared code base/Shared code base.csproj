@@ -7,7 +7,7 @@
     <ProjectGuid>{DC0197A6-9C34-4DE3-A014-78D46D4121A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shared_code_base</RootNamespace>
+    <RootNamespace>TATM.scb</RootNamespace>
     <AssemblyName>Shared code base</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

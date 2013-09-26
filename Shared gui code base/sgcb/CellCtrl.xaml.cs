@@ -53,6 +53,16 @@ namespace TATM.sgcb
                 // remove the exit image
                 Exit.Source = null;
             }
+
+            if (withEntity == EntityType.Minotaur)
+            {
+                ImageSourceConverter c = new ImageSourceConverter();
+                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Resources.minotaur);
+            } else if (withEntity == EntityType.Theseus)
+            {
+                ImageSourceConverter c = new ImageSourceConverter();
+                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Resources.theseus);
+            }
         }
 
         protected override void OnMouseUp(MouseButtonEventArgs e)

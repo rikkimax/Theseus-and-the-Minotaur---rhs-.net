@@ -15,7 +15,7 @@
         <Canvas x:Name="LeftWall" HorizontalAlignment="Left" Width="16" Background="Black"/>
         <Canvas x:Name="BottomWall" Margin="0,287,0,0" Background="Black" Grid.ColumnSpan="2"/>
         <Canvas x:Name="TopWall" Margin="0,0,0,287" Background="Black" Grid.ColumnSpan="2"/>
-        <Image x:Name="Exit" HorizontalAlignment="Left" Height="264" Margin="16,18,0,0" VerticalAlignment="Top" Width="263" Grid.ColumnSpan="2" Source="pack://siteoforigin:,,,/sgcb/exit.png"/>
-        <local1:EntityCtrl x:Name="Entity" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="264" Margin="21,18,0,0" VerticalAlignment="Top" Width="258"/>
+        <Image x:Name="Exit" HorizontalAlignment="Left" Height="274" Margin="16,13,0,0" VerticalAlignment="Top" Width="268" Grid.ColumnSpan="2" Source="pack://siteoforigin:,,,/sgcb/exit.png"/>
+        <Image x:Name="Entity" HorizontalAlignment="Left" Height="274" Margin="16,13,0,0" VerticalAlignment="Top" Width="268" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>

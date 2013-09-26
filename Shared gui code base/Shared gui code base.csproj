@@ -7,7 +7,7 @@
     <ProjectGuid>{75C447FC-1F68-4C40-A5F9-A20E36FD273A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shared_gui_code_base</RootNamespace>
+    <RootNamespace>TATM.sgcb</RootNamespace>
     <AssemblyName>Shared gui code base</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -54,19 +54,12 @@
     <Compile Include="sgcb\CellCtrl.xaml.cs">
       <DependentUpon>CellCtrl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="sgcb\EntityCtrl.xaml.cs">
-      <DependentUpon>EntityCtrl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="sgcb\GameBoardCtrl.xaml.cs">
       <DependentUpon>GameBoardCtrl.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="sgcb\CellCtrl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="sgcb\EntityCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="sgcb\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sgcb\theseus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sgcb\minotaur.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
