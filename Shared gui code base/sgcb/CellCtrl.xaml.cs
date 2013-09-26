@@ -58,10 +58,15 @@ namespace TATM.sgcb
             {
                 ImageSourceConverter c = new ImageSourceConverter();
                 Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Resources.minotaur);
-            } else if (withEntity == EntityType.Theseus)
+            }
+            else if (withEntity == EntityType.Theseus)
             {
                 ImageSourceConverter c = new ImageSourceConverter();
                 Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.sgcb.Resources.theseus);
+            }
+            else
+            {
+                Exit.Source = null;
             }
         }
 
