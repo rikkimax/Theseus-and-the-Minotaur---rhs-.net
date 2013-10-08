@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TATM.SCB.models
 {
-    class Entity
+    public class Entity
     {
-        uint startX, startY;
+        public uint startX, startY;
         public Entity(uint theStartX, uint theStartY)
         {
             this.startX = theStartX;

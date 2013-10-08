@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TATM.SCB.models
 {
-    class Border
+    public class Border
     {
-	    bool right;
-	    bool down;
+        public bool right;
+        public bool down;
         public Border(bool theRight, bool theDown)
         {
             this.right = theRight;

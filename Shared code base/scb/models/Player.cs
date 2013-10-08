@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TATM.SCB.models
 {
-    class Player
+    public class Player
     {
-        string name;
-        float highscore; // time
-        uint unlockMapLevel;
+        public string name;
+        public float highscore; // time
+        public uint unlockMapLevel;
     }
 }

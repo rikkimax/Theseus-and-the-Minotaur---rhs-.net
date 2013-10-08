@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TATM.SCB.models
 {
-    class GameSettings
+    public class GameSettings
     {
-        List<Player> players;
-        List<GameBoard> maps;
+        public List<Player> players;
+        public List<GameBoard> maps;
     }
 }

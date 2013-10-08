@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TATM.SCB.models
 {
-    class GameBoard
+    public class GameBoard
     {
-        uint level;
-        Entity theseus;
-        Entity minotaur;
-        uint width, height;
-        List<Cell> cells;
+        public uint level;
+        public Entity theseus;
+        public Entity minotaur;
+        public uint width, height;
+        public List<Cell> cells;
     }
 }

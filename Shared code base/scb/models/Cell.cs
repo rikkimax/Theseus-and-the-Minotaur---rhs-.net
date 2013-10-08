@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TATM.SCB.models
 {
-    class Cell
+    public class Cell
     {
-        uint x, y;
-        Border border;
-        bool isExit;
-        bool inAccessible;
+        public uint x, y;
+        public Border border;
+        public bool isExit;
+        public bool inAccessible;
         public Cell(uint theX, uint theY, Border theBorder, bool theIsExit, bool theInAccessible)
         {
             this.x = theX;
