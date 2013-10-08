@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TATM.SCB;
+using TATM.SCB.models;
 
 namespace TATM.SGCB
 {
@@ -33,10 +34,30 @@ namespace TATM.SGCB
         public bool hasUpWall { get; set; }
         public bool isExit { get; set; }
         public EntityType withEntity { get; set; }
+
+        public Cell data { get; set; }
         private DisplayMode mode;
 
         protected override void OnRender(DrawingContext dc)
         {
+            if (data.inAccessible)
+            {
+                hasLeftWall = false;
+                hasUpWall = false;
+                hasRightWall = false;
+                hasDownWall = false;
+
+                isExit = false;
+            }
+            else
+            {
+                hasLeftWall = false;
+                hasUpWall = false;
+                hasRightWall = data.border.right;
+                hasDownWall = data.border.down;
+                isExit = data.isExit;
+            }
+
             LeftWall.Background = new SolidColorBrush(hasLeftWall ? Colors.Black : Colors.Transparent);
             RightWall.Background = new SolidColorBrush(hasRightWall ? Colors.Black : Colors.Transparent);
             BottomWall.Background = new SolidColorBrush(hasDownWall ? Colors.Black : Colors.Transparent);
@@ -78,6 +99,7 @@ namespace TATM.SGCB
                 // All ya design code here.
                 // i.e. modify the walls
                 // if (e.GetPosition().X <= ...
+                // remember do it to data model not to internal state!
             }
         }
     }
