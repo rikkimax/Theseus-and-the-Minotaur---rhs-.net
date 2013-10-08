@@ -57,5 +57,4 @@
     <xunit Assembly="Shared code base\bin\Debug\Shared code base.dll" />
     <xunit Assembly="Shared gui code base\bin\Debug\Shared gui code base.dll" />
   </Target>
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

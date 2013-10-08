@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test
+namespace TATM.SCB.models
 {
-    class GameSettings
+    class Player
     {
-        List<Player> players;
-        List<GameBoard> maps;
+        string name;
+        float highscore; // time
+        uint unlockMapLevel;
     }
 }

@@ -13,7 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TATM.SCB;
 
-namespace TATM.sgcb
+namespace TATM.SGCB
 {
     /// <summary>
     /// Interaction logic for GameBoardCtrl.xaml

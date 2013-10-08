@@ -7,7 +7,7 @@
     <ProjectGuid>{DC0197A6-9C34-4DE3-A014-78D46D4121A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TATM.scb</RootNamespace>
+    <RootNamespace>TATM.SCB</RootNamespace>
     <AssemblyName>Shared code base</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -45,9 +45,14 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scb\constants.cs" />
+    <Compile Include="scb\models\Border.cs" />
+    <Compile Include="scb\models\Cell.cs" />
+    <Compile Include="scb\models\Entity.cs" />
+    <Compile Include="scb\models\GameBoard.cs" />
+    <Compile Include="scb\models\GameSettings.cs" />
+    <Compile Include="scb\models\Player.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
