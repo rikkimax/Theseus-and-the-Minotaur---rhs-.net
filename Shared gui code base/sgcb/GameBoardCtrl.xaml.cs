@@ -24,10 +24,18 @@ namespace TATM.SGCB
         List<CellCtrl> cells;
         Dictionary<EntityType, Point> entities;
 
-        public GameBoardCtrl(DisplayMode mode, GameBoard board)
+        public GameBoardCtrl()
         {
             InitializeComponent();
+        }
 
+        /*
+         * TODO Make sure to call this before usage!
+         * TODO Maybe do some checks for that...
+         * TODO Check that all inputs are valid.
+         */
+        public void init(DisplayMode mode, GameBoard board)
+        {
             cells = new List<CellCtrl>();
             entities = new Dictionary<EntityType, Point>();
             entities.Add(EntityType.Theseus, new Point(board.theseus.startX, board.theseus.startY));
@@ -47,9 +55,6 @@ namespace TATM.SGCB
             entities.Add(EntityType.Theseus, new Point(x, y));
         }
 
-        // how many cells do we need?
-        // how do we pass the data to construct them?
-
         public GameBoard board { get; set; }
 
         private byte cellsX;
@@ -61,10 +66,13 @@ namespace TATM.SGCB
             bool needUpdatedCells = board.cells.Count != cells.Count;
             int location;
             // do we need more conditions?
+            
+            // TODO has the size of render window been changed?
+            // if so need to update all cells sizes.
 
             if (needUpdatedCells)
             {
-                Grid.Children.Clear();
+                grid.Children.Clear();
                 cellsX = (byte)board.width;
                 cellsY = (byte)board.height;
 
@@ -73,9 +81,12 @@ namespace TATM.SGCB
                     if (board.cells.Count > cells.Count)
                     {
                         ushort toadd = (ushort)(board.cells.Count - cells.Count);
+                        Console.Write("Adding cell count "); Console.WriteLine(toadd);
                         for (uint i = 0; i < toadd; i++)
                         {
-                            cells.Add(new CellCtrl(mode));
+                            CellCtrl cell = new CellCtrl();
+                            cell.mode = mode;
+                            cells.Add(cell);
                         }
                     }
                     else
@@ -85,27 +96,19 @@ namespace TATM.SGCB
                     }
                 }
 
-                byte curX = 0;
-                byte curY = 0;
                 ushort cur = 0;
 
-                while (curX < cellsX && curY < cellsY && cur < cells.Count)
-                {
-                    if (curX >= cellsX)
+                for (byte curX = 0; curX < cellsX; curX++) {
+                    for (byte curY = 0; curY < cellsY; curY++)
                     {
-                        curY++;
-                        curX = 0;
-                    }
-                    else
-                    {
-                        curX++;
-                    }
+                        // set grid items size
 
-                    Grid.SetColumn(cells[cur], curX);
-                    Grid.SetRow(cells[cur], curY);
-                    Grid.Children.Add(cells[cur]);
+                        grid.Children.Add(cells[cur]);
+                        Grid.SetColumn(cells[cur], curX);
+                        Grid.SetRow(cells[cur], curY);
 
-                    cur++;
+                        cur++;
+                    }
                 }
 
                 needUpdatedCells = false;

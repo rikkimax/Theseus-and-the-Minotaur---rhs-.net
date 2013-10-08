@@ -21,11 +21,9 @@ namespace TATM.SGCB
     /// </summary>
     public partial class CellCtrl : UserControl
     {
-        public CellCtrl(DisplayMode mode)
+        public CellCtrl()
         {
             InitializeComponent();
-            this.mode = mode;
-            
         }
 
         public bool hasLeftWall { get; set; }
@@ -36,58 +34,62 @@ namespace TATM.SGCB
         public EntityType withEntity { get; set; }
 
         public Cell data { get; set; }
-        private DisplayMode mode;
+        public DisplayMode mode { get; set; }
 
         protected override void OnRender(DrawingContext dc)
         {
-            if (data.inAccessible)
+            base.OnRender(dc);
+            if (data != null)
             {
-                hasLeftWall = false;
-                hasUpWall = false;
-                hasRightWall = false;
-                hasDownWall = false;
+                if (data.inAccessible)
+                {
+                    hasLeftWall = false;
+                    hasUpWall = false;
+                    hasRightWall = false;
+                    hasDownWall = false;
 
-                isExit = false;
-            }
-            else
-            {
-                hasLeftWall = false;
-                hasUpWall = false;
-                hasRightWall = data.border.right;
-                hasDownWall = data.border.down;
-                isExit = data.isExit;
-            }
+                    isExit = false;
+                }
+                else
+                {
+                    hasLeftWall = false;
+                    hasUpWall = false;
+                    hasRightWall = data.border.right;
+                    hasDownWall = data.border.down;
+                    isExit = data.isExit;
+                }
 
-            LeftWall.Background = new SolidColorBrush(hasLeftWall ? Colors.Black : Colors.Transparent);
-            RightWall.Background = new SolidColorBrush(hasRightWall ? Colors.Black : Colors.Transparent);
-            BottomWall.Background = new SolidColorBrush(hasDownWall ? Colors.Black : Colors.Transparent);
-            TopWall.Background = new SolidColorBrush(hasUpWall ? Colors.Black : Colors.Transparent);
+                LeftWall.Background = new SolidColorBrush(hasLeftWall ? Colors.Black : Colors.Transparent);
+                RightWall.Background = new SolidColorBrush(hasRightWall ? Colors.Black : Colors.Transparent);
+                BottomWall.Background = new SolidColorBrush(hasDownWall ? Colors.Black : Colors.Transparent);
+                TopWall.Background = new SolidColorBrush(hasUpWall ? Colors.Black : Colors.Transparent);
 
-            if (isExit)
-            {
-                // show the exit image
-                ImageSourceConverter c = new ImageSourceConverter();
-                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.SGCB.Properties.Resources.exit);
-            }
-            else
-            {
-                // remove the exit image
-                Exit.Source = null;
-            }
+                if (isExit)
+                {
+                    // show the exit image
+                    ImageSourceConverter c = new ImageSourceConverter();
+                    //Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.SGCB.Properties.Resources.exit);
+                }
+                else
+                {
+                    // remove the exit image
+                    //Exit.Source = null;
+                }
 
-            if (withEntity == EntityType.Minotaur)
-            {
-                ImageSourceConverter c = new ImageSourceConverter();
-                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.SGCB.Properties.Resources.minotaur);
-            }
-            else if (withEntity == EntityType.Theseus)
-            {
-                ImageSourceConverter c = new ImageSourceConverter();
-                Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.SGCB.Properties.Resources.theseus);
-            }
-            else
-            {
-                Exit.Source = null;
+                if (withEntity == EntityType.Minotaur)
+                {
+                    ImageSourceConverter c = new ImageSourceConverter();
+                    //Entity.Source = (ImageSource)c.ConvertFrom(global::TATM.SGCB.Properties.Resources.minotaur);
+                }
+                else if (withEntity == EntityType.Theseus)
+                {
+                    ImageSourceConverter c = new ImageSourceConverter();
+                    //Entity.Source = (ImageSource)c.ConvertFrom(global::TATM.SGCB.Properties.Resources.theseus);
+                }
+                else
+                {
+                    //Entity.Source = null;
+                }
             }
         }
 
