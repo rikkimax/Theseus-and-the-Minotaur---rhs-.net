@@ -12,4 +12,13 @@
         Minotaur,
         None
     }
+
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right,
+        Omit
+    }
 }

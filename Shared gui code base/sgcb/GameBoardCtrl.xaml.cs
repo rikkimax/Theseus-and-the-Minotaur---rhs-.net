@@ -55,7 +55,17 @@ namespace TATM.SGCB
             entities.Add(EntityType.Theseus, new Point(x, y));
         }
 
-        public GameBoard board { get; set; }
+        private GameBoard board;
+        
+        public GameBoard GetBoard()
+        {
+            return board;
+        }
+
+        public void SetBoard(GameBoard board)
+        {
+            this.board = board;
+        }
 
         private byte cellsX;
         private byte cellsY;
@@ -154,6 +164,64 @@ namespace TATM.SGCB
             cells[location].withEntity = EntityType.Minotaur;
 
             base.OnRender(drawingContext);
+        }
+
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            // say what about stopping spamming of key presses?
+            // maybe we should throttle that..
+
+            if (mode == DisplayMode.Play)
+            {
+                Direction directionToMove = Direction.Omit;
+                bool makeMove = true;
+
+                // shouldn't we send off to an algorithym about e.g. a move?
+                // also is keys bindable?
+
+                switch (e.Key)
+                {
+                    case Key.Left:
+                        // left arrow
+                        directionToMove = Direction.Left;
+                        break;
+                    case Key.Right:
+                        // right arrow
+                        directionToMove = Direction.Right;
+                        break;
+                    case Key.Up:
+                        // up arrow
+                        directionToMove = Direction.Up;
+                        break;
+                    case Key.Down:
+                        // down arrow
+                        directionToMove = Direction.Down;
+                        break;
+                    case Key.Space:
+                        // how about skipping a turn?
+                        //directionToMove = Direction.Omit; // waste of code as its already default
+                        break;
+                    default:
+                        // ignore this case (could be anything)
+                        makeMove = false;
+                        break;
+                }
+
+                // so.. now lets go change the data models with the new moves.
+                // that we may or may not be able to make. We'd know if we checked the return value.
+                if (makeMove)
+                    MakeMove.TheseusTurn(ref board, ref entities, directionToMove);
+
+
+            }
+            else if (mode == DisplayMode.Design)
+            {
+                // explicitly saying this instead of else'ing. It _should_ be optimized out.
+                // good practice.
+
+                // anything specific required for design key wise?
+            }
+            base.OnPreviewKeyDown(e);
         }
     }
 }
