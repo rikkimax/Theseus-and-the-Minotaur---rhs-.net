@@ -24,6 +24,13 @@ namespace TATM.SGCB
         public CellCtrl()
         {
             InitializeComponent();
+
+            hasLeftWall = false;
+            hasUpWall = false;
+            hasRightWall = false;
+            hasDownWall = false;
+
+            isExit = false;
         }
 
         public bool hasLeftWall { get; set; }
@@ -38,7 +45,6 @@ namespace TATM.SGCB
 
         protected override void OnRender(DrawingContext dc)
         {
-            base.OnRender(dc);
             if (data != null)
             {
                 if (data.inAccessible)
@@ -52,8 +58,8 @@ namespace TATM.SGCB
                 }
                 else
                 {
-                    hasLeftWall = false;
-                    hasUpWall = false;
+                    //hasLeftWall = false;
+                    //hasUpWall = false;
                     hasRightWall = data.border.right;
                     hasDownWall = data.border.down;
                     isExit = data.isExit;
@@ -66,9 +72,10 @@ namespace TATM.SGCB
 
                 if (isExit)
                 {
-                    // show the exit image
-                    ImageSourceConverter c = new ImageSourceConverter();
-                    //Exit.Source = (ImageSource)c.ConvertFrom(global::TATM.SGCB.Properties.Resources.exit);
+                    var hBitmap = global::TATM.SGCB.Properties.Resources.exit.GetHbitmap();
+                    var result = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, System.Windows.Int32Rect.Empty, System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+
+                    Exit.Source = result;
                 }
                 else
                 {
@@ -78,24 +85,28 @@ namespace TATM.SGCB
 
                 if (withEntity == EntityType.Minotaur)
                 {
-                    ImageSourceConverter c = new ImageSourceConverter();
-                    //Entity.Source = (ImageSource)c.ConvertFrom(global::TATM.SGCB.Properties.Resources.minotaur);
+                    var hBitmap = global::TATM.SGCB.Properties.Resources.minotaur.GetHbitmap();
+                    var result = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, System.Windows.Int32Rect.Empty, System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+
+                    Entity.Source = result;
                 }
                 else if (withEntity == EntityType.Theseus)
                 {
-                    ImageSourceConverter c = new ImageSourceConverter();
-                    //Entity.Source = (ImageSource)c.ConvertFrom(global::TATM.SGCB.Properties.Resources.theseus);
+                    var hBitmap = global::TATM.SGCB.Properties.Resources.theseus.GetHbitmap();
+                    var result = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, System.Windows.Int32Rect.Empty, System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+
+                    Entity.Source = result;
                 }
                 else
                 {
                     //Entity.Source = null;
                 }
             }
+            base.OnRender(dc);
         }
 
         protected override void OnMouseUp(MouseButtonEventArgs e)
         {
-            base.OnMouseUp(e);
             if (mode == DisplayMode.Design)
             {
                 // All ya design code here.
@@ -103,6 +114,7 @@ namespace TATM.SGCB
                 // if (e.GetPosition().X <= ...
                 // remember do it to data model not to internal state!
             }
+            base.OnMouseUp(e);
         }
     }
 }

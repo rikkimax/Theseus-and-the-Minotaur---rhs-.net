@@ -6,16 +6,14 @@
              xmlns:local="clr-namespace:TATM.SGCB" xmlns:local1="clr-namespace:TATM.SGCB" x:Class="TATM.SGCB.CellCtrl" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid ClipToBounds="True">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="38*"/>
-            <ColumnDefinition Width="37*"/>
-        </Grid.ColumnDefinitions>
-        <Image x:Name="Exit" HorizontalAlignment="Left" Height="274" Margin="16,13,0,0" VerticalAlignment="Top" Width="268" Grid.ColumnSpan="2" Source="pack://siteoforigin:,,,/sgcb/exit.png"/>
-        <Image x:Name="Entity" HorizontalAlignment="Left" Height="274" Margin="16,13,0,0" VerticalAlignment="Top" Width="268" Grid.ColumnSpan="2"/>
-        <Canvas x:Name="RightWall" Margin="131.81,-10,0,10" Width="16" Background="Black" Grid.Column="1"/>
-        <Canvas x:Name="LeftWall" HorizontalAlignment="Left" Width="16" Background="Black"/>
-        <Canvas x:Name="BottomWall" Margin="0,287,0,0" Background="Black" Grid.ColumnSpan="2" Height="16"/>
-        <Canvas x:Name="TopWall" Margin="0,0,0,287" Background="Black" Grid.ColumnSpan="2" Height="16"/>
-    </Grid>
+    <Viewbox StretchDirection="DownOnly">
+        <Grid>
+            <Image x:Name="Entity" Margin="16" Source="pack://siteoforigin:,,,/sgcb/theseus.png"/>
+            <Image x:Name="Exit" HorizontalAlignment="Left" Height="274" Margin="16,13,0,0" VerticalAlignment="Top" Width="268" Grid.ColumnSpan="2" Source="pack://siteoforigin:,,,/sgcb/exit.png"/>
+            <Canvas x:Name="RightWall" Background="Black" HorizontalAlignment="Right" Width="16"/>
+            <Canvas x:Name="LeftWall" HorizontalAlignment="Left" Width="16" Background="Black"/>
+            <Canvas x:Name="BottomWall" Background="Black" Height="16" VerticalAlignment="Bottom"/>
+            <Canvas x:Name="TopWall" Background="Black" Height="16" VerticalAlignment="Top"/>
+        </Grid>
+    </Viewbox>
 </UserControl>

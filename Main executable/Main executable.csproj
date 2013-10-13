@@ -91,6 +91,15 @@
       <Name>Shared gui code base</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="images\minotaur.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\theseus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\exit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
