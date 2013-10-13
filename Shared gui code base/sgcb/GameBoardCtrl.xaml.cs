@@ -66,7 +66,7 @@ namespace TATM.SGCB
             bool needUpdatedCells = board.cells.Count != cells.Count;
             int location;
             // do we need more conditions?
-            
+
             // TODO has the size of render window been changed?
             // if so need to update all cells sizes.
 
@@ -78,10 +78,26 @@ namespace TATM.SGCB
 
                 if (board.cells.Count != cells.Count)
                 {
+                    grid.RowDefinitions.Clear();
+                    grid.ColumnDefinitions.Clear();
+
+                    for (uint i = 0; i < cellsY; i++)
+                    {
+                        var rowDefinition = new RowDefinition();
+                        rowDefinition.Height = GridLength.Auto;
+                        grid.RowDefinitions.Add(rowDefinition);
+                    }
+
+                    for (uint i = 0; i < cellsX; i++)
+                    {
+                        var colDefinition = new ColumnDefinition();
+                        colDefinition.Width = GridLength.Auto;
+                        grid.ColumnDefinitions.Add(colDefinition);
+                    }
+
                     if (board.cells.Count > cells.Count)
                     {
                         ushort toadd = (ushort)(board.cells.Count - cells.Count);
-                        Console.Write("Adding cell count "); Console.WriteLine(toadd);
                         for (uint i = 0; i < toadd; i++)
                         {
                             CellCtrl cell = new CellCtrl();
@@ -98,14 +114,14 @@ namespace TATM.SGCB
 
                 ushort cur = 0;
 
-                for (byte curX = 0; curX < cellsX; curX++) {
+                for (byte curX = 0; curX < cellsX; curX++)
+                {
                     for (byte curY = 0; curY < cellsY; curY++)
                     {
                         // set grid items size
-
                         grid.Children.Add(cells[cur]);
-                        Grid.SetColumn(cells[cur], curX);
-                        Grid.SetRow(cells[cur], curY);
+                        Grid.SetColumn(cells[cur], curY);
+                        Grid.SetRow(cells[cur], curX);
 
                         cur++;
                     }
@@ -120,10 +136,21 @@ namespace TATM.SGCB
                 cells[location].withEntity = EntityType.None;
             }
 
-            location = (int)((entities[EntityType.Theseus].Y * cellsY) + entities[EntityType.Theseus].X);
+            // TODO note this is not a true wall determination for left and up.
+            // Maybe this should be fixed?
+            for (byte cur = 0; cur < cellsX * cellsY; cur += cellsX)
+            {
+                cells[cur].hasLeftWall = true;
+            }
+            for (byte cur = 0; cur < cellsY; cur++)
+            {
+                cells[cur].hasUpWall = true;
+            }
+
+            location = (int)((entities[EntityType.Theseus].Y * cellsX) + entities[EntityType.Theseus].X);
             cells[location].withEntity = EntityType.Theseus;
 
-            location = (int)((entities[EntityType.Minotaur].Y * cellsY) + entities[EntityType.Minotaur].X);
+            location = (int)((entities[EntityType.Minotaur].Y * cellsX) + entities[EntityType.Minotaur].X);
             cells[location].withEntity = EntityType.Minotaur;
 
             base.OnRender(drawingContext);
