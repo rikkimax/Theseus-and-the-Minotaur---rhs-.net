@@ -27,6 +27,8 @@ namespace TATM.SGCB
         public GameBoardCtrl()
         {
             InitializeComponent();
+            cells = new List<CellCtrl>();
+            entities = new Dictionary<EntityType, Point>();
         }
 
         /*
@@ -36,8 +38,6 @@ namespace TATM.SGCB
          */
         public void init(DisplayMode mode, GameBoard board)
         {
-            cells = new List<CellCtrl>();
-            entities = new Dictionary<EntityType, Point>();
             entities.Add(EntityType.Theseus, new Point(board.theseus.startX, board.theseus.startY));
             entities.Add(EntityType.Minotaur, new Point(board.minotaur.startX, board.minotaur.startY));
 
@@ -73,9 +73,17 @@ namespace TATM.SGCB
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            bool needUpdatedCells = board.cells.Count != cells.Count;
+            bool needUpdatedCells;
+            if (board == null)
+            {
+                needUpdatedCells = false;
+            } 
+            else
+            {
+                needUpdatedCells = board.cells.Count != cells.Count;
+                // do we need more conditions?
+            }
             int location;
-            // do we need more conditions?
 
             // TODO has the size of render window been changed?
             // if so need to update all cells sizes.
@@ -140,29 +148,32 @@ namespace TATM.SGCB
                 needUpdatedCells = false;
             }
 
-            for (location = 0; location < cells.Count; location++)
+            if (board != null)
             {
-                cells[location].data = board.cells[location];
-                cells[location].withEntity = EntityType.None;
+
+                for (location = 0; location < cells.Count; location++)
+                {
+                    cells[location].data = board.cells[location];
+                    cells[location].withEntity = EntityType.None;
+                }
+
+                // TODO note this is not a true wall determination for left and up.
+                // Maybe this should be fixed?
+                for (byte cur = 0; cur < cellsX * cellsY; cur += cellsX)
+                {
+                    cells[cur].hasLeftWall = true;
+                }
+                for (byte cur = 0; cur < cellsY; cur++)
+                {
+                    cells[cur].hasUpWall = true;
+                }
+
+                location = (int)((entities[EntityType.Theseus].Y * cellsX) + entities[EntityType.Theseus].X);
+                cells[location].withEntity = EntityType.Theseus;
+
+                location = (int)((entities[EntityType.Minotaur].Y * cellsX) + entities[EntityType.Minotaur].X);
+                cells[location].withEntity = EntityType.Minotaur;
             }
-
-            // TODO note this is not a true wall determination for left and up.
-            // Maybe this should be fixed?
-            for (byte cur = 0; cur < cellsX * cellsY; cur += cellsX)
-            {
-                cells[cur].hasLeftWall = true;
-            }
-            for (byte cur = 0; cur < cellsY; cur++)
-            {
-                cells[cur].hasUpWall = true;
-            }
-
-            location = (int)((entities[EntityType.Theseus].Y * cellsX) + entities[EntityType.Theseus].X);
-            cells[location].withEntity = EntityType.Theseus;
-
-            location = (int)((entities[EntityType.Minotaur].Y * cellsX) + entities[EntityType.Minotaur].X);
-            cells[location].withEntity = EntityType.Minotaur;
-
             base.OnRender(drawingContext);
         }
 
