@@ -52,7 +52,8 @@ namespace TATM.ME
 
         public void EntityClashEvent()
         {
-            System.Console.WriteLine("clashed");
+            System.Console.WriteLine("Dinner time!");
+            gameBoardCtrl1.reinit();
         }
 
         public void EntityExited()

@@ -59,6 +59,13 @@ namespace TATM.SGCB
             this.board = board;
         }
 
+        public void reinit()
+        {
+            entities[EntityType.Theseus] = new Point(board.theseus.startX, board.theseus.startY);
+            entities[EntityType.Minotaur] = new Point(board.minotaur.startX, board.minotaur.startY);
+            InvalidateVisual();
+        }
+
         void setMinotaur(byte x, byte y)
         {
             entities.Add(EntityType.Minotaur, new Point(x, y));
