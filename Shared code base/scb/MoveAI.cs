@@ -120,6 +120,10 @@ namespace TATM.SCB {
                 }
             }
 
+            if (MinotaurTurn(ref board, ref entities))
+            {
+                MinotaurTurn(ref board, ref entities);
+            }
             return false;
         }
 
