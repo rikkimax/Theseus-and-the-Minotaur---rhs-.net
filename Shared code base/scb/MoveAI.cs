@@ -99,6 +99,27 @@ namespace TATM.SCB {
             // when Theseus had a turn run comparison (is Entity.theX == theExit.theX && Entity.theY == theExit.theY?) if so level is over;
             //      else: the minotaur must now move(twice).
             // if (MinotaurTurn(board, entities)) MinotaurTurn(board, entities);
+
+            if (MoveUtil.CanMakeMove(ref board, EntityType.Theseus, ref entities, direction))
+            {
+                if (direction == Direction.Left)
+                {
+                    entities[EntityType.Theseus] = new Point(entities[EntityType.Theseus].X - 1, entities[EntityType.Theseus].Y);
+                }
+                else if (direction == Direction.Right)
+                {
+                    entities[EntityType.Theseus] = new Point(entities[EntityType.Theseus].X + 1, entities[EntityType.Theseus].Y);
+                }
+                else if (direction == Direction.Up)
+                {
+                    entities[EntityType.Theseus] = new Point(entities[EntityType.Theseus].X, entities[EntityType.Theseus].Y -1);
+                }
+                else if (direction == Direction.Down)
+                {
+                    entities[EntityType.Theseus] = new Point(entities[EntityType.Theseus].X, entities[EntityType.Theseus].Y +1);
+                }
+            }
+
             return false;
         }
 
@@ -108,7 +129,6 @@ namespace TATM.SCB {
          * if T.theY = M.theY dont worry about left/right
          * elseif T.theY > M.theY, go right
          * else
-         * I think Louis is doing this???
          */
         private static bool MinotaurTurn(ref GameBoard board, ref Dictionary<EntityType, Point> entities)
         {
