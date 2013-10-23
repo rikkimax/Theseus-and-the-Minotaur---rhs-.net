@@ -80,7 +80,7 @@ namespace TATM.SGCB
                 else
                 {
                     // remove the exit image
-                    //Exit.Source = null;
+                    Exit.Source = null;
                 }
 
                 if (withEntity == EntityType.Minotaur)
@@ -99,7 +99,7 @@ namespace TATM.SGCB
                 }
                 else
                 {
-                    //Entity.Source = null;
+                    Entity.Source = null;
                 }
             }
             base.OnRender(dc);

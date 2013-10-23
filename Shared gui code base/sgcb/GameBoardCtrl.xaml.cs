@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using TATM.SCB;
 using TATM.SCB.models;
 
@@ -82,7 +83,7 @@ namespace TATM.SGCB
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            bool needUpdatedCells;
+            bool needUpdatedCells = false;
             if (board == null)
             {
                 needUpdatedCells = false;
@@ -91,6 +92,7 @@ namespace TATM.SGCB
             {
                 needUpdatedCells = board.cells.Count != cells.Count;
                 // do we need more conditions?
+                needUpdatedCells = true;
             }
             int location;
 
@@ -230,9 +232,11 @@ namespace TATM.SGCB
                 // so.. now lets go change the data models with the new moves.
                 // that we may or may not be able to make. We'd know if we checked the return value.
                 if (makeMove)
-                    MakeMove.TheseusTurn(ref board, ref entities, directionToMove);
-
-
+                    if (MakeMove.TheseusTurn(ref board, ref entities, directionToMove))
+                    {
+                        // TODO redraw
+                        InvalidateVisual();
+                    }
             }
             else if (mode == DisplayMode.Design)
             {

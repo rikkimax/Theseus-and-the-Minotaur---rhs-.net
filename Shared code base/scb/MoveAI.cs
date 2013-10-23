@@ -51,12 +51,12 @@ namespace TATM.SCB {
                     current = cell;
                 }
 
-                if (cell.x == entities[entity].X-1 && cell.y == entities[entity].Y)
+                if (cell.x == entities[entity].X - 1 && cell.y == entities[entity].Y)
                 {
                     left = cell;
                 }
 
-                if (cell.x == entities[entity].X && cell.y == entities[entity].Y-1)
+                if (cell.x == entities[entity].X && cell.y == entities[entity].Y - 1)
                 {
                     up = cell;
                 }
@@ -73,11 +73,11 @@ namespace TATM.SCB {
             }
             else if (up != null && direction == Direction.Up)
             {
-                return !current.border.down;
+                return !up.border.down;
             }
             else if (left != null && direction == Direction.Left)
             {
-                return !current.border.right;
+                return !left.border.right;
             }
 
             return false;
@@ -92,6 +92,8 @@ namespace TATM.SCB {
          */
         public static bool TheseusTurn(ref GameBoard board, ref Dictionary<EntityType, Point> entities, Direction direction)
         {
+            bool move = false;
+
             // can theseus make the turn?
             // cross reference arrow keys or WASD keys against validated move options
             // if valid and asked for commit the move, and turn -1. If invalid do we give user feedback? but still has tun to try different direction
@@ -112,19 +114,21 @@ namespace TATM.SCB {
                 }
                 else if (direction == Direction.Up)
                 {
-                    entities[EntityType.Theseus] = new Point(entities[EntityType.Theseus].X, entities[EntityType.Theseus].Y -1);
+                    entities[EntityType.Theseus] = new Point(entities[EntityType.Theseus].X, entities[EntityType.Theseus].Y - 1);
                 }
                 else if (direction == Direction.Down)
                 {
-                    entities[EntityType.Theseus] = new Point(entities[EntityType.Theseus].X, entities[EntityType.Theseus].Y +1);
+                    entities[EntityType.Theseus] = new Point(entities[EntityType.Theseus].X, entities[EntityType.Theseus].Y + 1);
                 }
+
+                move = true;
             }
 
             if (MinotaurTurn(ref board, ref entities))
             {
                 MinotaurTurn(ref board, ref entities);
             }
-            return false;
+            return move;
         }
 
         /**
@@ -147,7 +151,7 @@ namespace TATM.SCB {
                 direction = Direction.Right;
             }
             // is desired movement permissable?
-            if (MoveUtil.CanMakeMove(ref board, EntityType.Theseus, ref entities, direction))
+            if (MoveUtil.CanMakeMove(ref board, EntityType.Minotaur, ref entities, direction))
             {
                 if (direction == Direction.Left)
                 {
@@ -172,7 +176,7 @@ namespace TATM.SCB {
                 direction = Direction.Down;
             }
             // is desired movement permissable?
-            if (MoveUtil.CanMakeMove(ref board, EntityType.Theseus, ref entities, direction))
+            if (MoveUtil.CanMakeMove(ref board, EntityType.Minotaur, ref entities, direction))
             {
                 if (direction == Direction.Up)
                 {
