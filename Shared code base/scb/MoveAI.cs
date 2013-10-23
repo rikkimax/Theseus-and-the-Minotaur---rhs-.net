@@ -51,6 +51,7 @@ namespace TATM.SCB {
          * if T.theY = M.theY dont worry about left/right
          * elseif T.theY > M.theY, go right
          * else
+         * I think Louis is doing this???
          */
         private static bool MinotaurTurn(ref GameBoard board, ref Dictionary<EntityType, Point> entities)
         {
