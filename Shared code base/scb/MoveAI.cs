@@ -23,6 +23,63 @@ namespace TATM.SCB {
              * If the entity wants to move right, check current cell for right wall being blocked, if true invalidate potential move right
              * If the unit wants to go down, check the current cell for the down wall being blocked, if true invalidate potential move down
              */
+
+            if (direction == Direction.Omit)
+            {
+                return true;
+            }
+
+            if (entities[entity].X == 0)
+            {
+                if (direction == Direction.Left)
+                {
+                    return false;
+                }
+            }
+            if (entities[entity].Y == 0)
+            {
+                if (direction == Direction.Up)
+                {
+                    return false;
+                }
+            }
+
+            Cell left = null, up = null, current = null; 
+            foreach (Cell cell in board.cells) {
+                if (cell.x == entities[entity].X && cell.y == entities[entity].Y)
+                {
+                    current = cell;
+                }
+
+                if (cell.x == entities[entity].X-1 && cell.y == entities[entity].Y)
+                {
+                    left = cell;
+                }
+
+                if (cell.x == entities[entity].X && cell.y == entities[entity].Y-1)
+                {
+                    up = cell;
+                }
+
+            }
+
+            if (current != null && direction == Direction.Right)
+            {
+                return !current.border.right;
+            }
+            else if (current != null && direction == Direction.Down)
+            {
+                return !current.border.down;
+            }
+            else if (up != null && direction == Direction.Up)
+            {
+                return !current.border.down;
+            }
+            else if (left != null && direction == Direction.Left)
+            {
+                return !current.border.right;
+            }
+
             return false;
         }
     }
