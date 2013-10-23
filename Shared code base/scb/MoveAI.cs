@@ -136,7 +136,55 @@ namespace TATM.SCB {
          */
         private static bool MinotaurTurn(ref GameBoard board, ref Dictionary<EntityType, Point> entities)
         {
-            // how about that ai now?
+            // minotaur seeking ai now?
+            Direction direction = Direction.Omit;
+            if (entities[EntityType.Theseus].X < entities[EntityType.Minotaur].X)
+            {
+                direction = Direction.Left;
+            }
+            if (entities[EntityType.Theseus].X > entities[EntityType.Minotaur].X)
+            {
+                direction = Direction.Right;
+            }
+            // is desired movement permissable?
+            if (MoveUtil.CanMakeMove(ref board, EntityType.Theseus, ref entities, direction))
+            {
+                if (direction == Direction.Left)
+                {
+                    entities[EntityType.Minotaur] = new Point(entities[EntityType.Minotaur].X - 1, entities[EntityType.Minotaur].Y);
+                    return true;
+                }
+                else if (direction == Direction.Right)
+                {
+                    entities[EntityType.Minotaur] = new Point(entities[EntityType.Minotaur].X + 1, entities[EntityType.Minotaur].Y);
+                    return true;
+                }
+            }
+
+            direction = Direction.Omit;
+
+            if (entities[EntityType.Theseus].Y < entities[EntityType.Minotaur].Y)
+            {
+                direction = Direction.Up;
+            }
+            if (entities[EntityType.Theseus].Y > entities[EntityType.Minotaur].Y)
+            {
+                direction = Direction.Down;
+            }
+            // is desired movement permissable?
+            if (MoveUtil.CanMakeMove(ref board, EntityType.Theseus, ref entities, direction))
+            {
+                if (direction == Direction.Up)
+                {
+                    entities[EntityType.Minotaur] = new Point(entities[EntityType.Minotaur].X, entities[EntityType.Minotaur].Y - 1);
+                    return true;
+                }
+                else if (direction == Direction.Down)
+                {
+                    entities[EntityType.Minotaur] = new Point(entities[EntityType.Minotaur].X, entities[EntityType.Minotaur].Y + 1);
+                    return true;
+                }
+            }
             return false;
         }
     }
