@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using TATM.SCB;
 using TATM.SCB.models;
+using TATM.SGCB;
 
 namespace TATM.ME
 {
@@ -40,10 +41,23 @@ namespace TATM.ME
             board.cells.Add(new Cell(2, 2, new Border(true, true), false, false));
 
             gameBoardCtrl1.init(DisplayMode.Play, board);
+            gameBoardCtrl1.EntityTouched += new GameBoardCtrl.EntityClashDelegate(EntityClashEvent);
+            gameBoardCtrl1.TheseusExited += new GameBoardCtrl.EntityClashDelegate(EntityExited);
 
             Width = Width + 1;
+            Width = Width - 1;
         }
 
         public GameBoard board;
+
+        public void EntityClashEvent()
+        {
+            System.Console.WriteLine("clashed");
+        }
+
+        public void EntityExited()
+        {
+            System.Console.WriteLine("exited");
+        }
     }
 }

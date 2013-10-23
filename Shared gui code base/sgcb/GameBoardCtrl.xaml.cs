@@ -25,6 +25,10 @@ namespace TATM.SGCB
         List<CellCtrl> cells;
         Dictionary<EntityType, Point> entities;
 
+        public delegate void EntityClashDelegate();
+        public event EntityClashDelegate EntityTouched;
+        public event EntityClashDelegate TheseusExited;
+
         public GameBoardCtrl()
         {
             InitializeComponent();
@@ -232,11 +236,29 @@ namespace TATM.SGCB
                 // so.. now lets go change the data models with the new moves.
                 // that we may or may not be able to make. We'd know if we checked the return value.
                 if (makeMove)
+                {
                     if (MakeMove.TheseusTurn(ref board, ref entities, directionToMove))
                     {
                         // TODO redraw
                         InvalidateVisual();
                     }
+                }
+
+                if (entities[EntityType.Theseus].ToString() == entities[EntityType.Minotaur].ToString())
+                {
+                    EntityTouched();
+                }
+                else
+                {
+                    foreach (Cell cell in board.cells)
+                    {
+                        if (cell.x == entities[EntityType.Theseus].X && cell.y == entities[EntityType.Theseus].Y && cell.isExit)
+                        {
+                            TheseusExited();
+                            break;
+                        }
+                    }
+                }
             }
             else if (mode == DisplayMode.Design)
             {
