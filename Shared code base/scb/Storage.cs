@@ -16,12 +16,15 @@ namespace TATM.SCB
             return Type.GetType("Mono.Runtime") != null;
         }
 
-        public static string GetFilePath ()
+        public static string GetFilePath()
         {
             string path;
-            if (IsRunningOnMono()) {
+            if (IsRunningOnMono())
+            {
                 return "~/TATMRHS/";
-            } else {
+            }
+            else
+            {
                 path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 return System.IO.Path.Combine(path, "TATMRHS");
             }
@@ -33,8 +36,10 @@ namespace TATM.SCB
 
             try
             {
+                String filePath = GetFilePath();
+                string filename = System.IO.Path.Combine(filePath, "data.xml");
                 XmlSerializer ser = new XmlSerializer(typeof(GameSettings));
-                TextWriter writer = new StreamWriter(GetFilename());
+                TextWriter writer = new StreamWriter(filename);
                 ser.Serialize(writer, settings);
                 writer.Close();
             }
@@ -58,13 +63,15 @@ namespace TATM.SCB
             return settings;
         }
 
-        public static void CheckDirectory() {
+        public static void CheckDirectory()
+        {
             // does directory exist?
             // if not create
-            String filename = GetFilename();
+            String filePath = GetFilePath();
             //if the file doesnt exist
-            if (!File.Exists(filename)) {
-                System.IO.Directory.CreateDirectory(filename);
+            if (!File.Exists(filePath))
+            {
+                System.IO.Directory.CreateDirectory(filePath);
             }
         }
     }
