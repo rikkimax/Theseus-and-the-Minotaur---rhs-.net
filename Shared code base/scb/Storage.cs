@@ -26,10 +26,12 @@ namespace TATM.SCB
 
         public static void Save()
         {
+            CheckDirectory();
+
             try
             {
                 XmlSerializer ser = new XmlSerializer(typeof(GameSettings));
-                TextWriter writer = new StreamWriter("h:\\test.txt");
+                TextWriter writer = new StreamWriter(GetFilename());
                 ser.Serialize(writer, settings);
                 writer.Close();
             }
@@ -41,6 +43,8 @@ namespace TATM.SCB
 
         public static GameSettings Load()
         {
+            CheckDirectory();
+
             String filename;
             // Create an instance of the XmlSerializer.
             XmlSerializer serializer = new XmlSerializer(typeof(GameSettings));
@@ -50,6 +54,11 @@ namespace TATM.SCB
             // Call the Deserialize method to restore the object's state.
             settings = (GameSettings)serializer.Deserialize(reader);
             return settings;
+        }
+
+        public static void CheckDirectory() {
+            // does directory exist?
+            // if not create
         }
     }
 }

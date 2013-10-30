@@ -44,6 +44,8 @@ namespace TATM.ME
             settings.maps.Add(board);
             Storage.settings = settings;
             Storage.Save();
+            Storage.Load();
+            Storage.Save();
 
             gameBoardCtrl1.init(DisplayMode.Play, board);
             gameBoardCtrl1.EntityTouched += new GameBoardCtrl.EntityClashDelegate(EntityClashEvent);
