@@ -5,9 +5,9 @@ using System.Xml.Serialization;
 using System.IO;
 using TATM.SCB.models;
 
-namespace TATM.SCB.scb
+namespace TATM.SCB
 {
-    class Storage
+    public class Storage
     {
         public static GameSettings settings { get; set; }
 
@@ -15,6 +15,7 @@ namespace TATM.SCB.scb
         {
             return Type.GetType("Mono.Runtime") != null;
         }
+
         public static string GetFilename()
         {
             if (IsRunningOnMono())
@@ -22,6 +23,7 @@ namespace TATM.SCB.scb
             else
                 return "%APPDATA%/TATMRHS/data.xml";
         }
+
         public static void Save()
         {
             String filename;
@@ -32,6 +34,7 @@ namespace TATM.SCB.scb
             x.Serialize(file, settings);
             file.Close();
         }
+
         public static GameSettings Load()
         {
             String filename;

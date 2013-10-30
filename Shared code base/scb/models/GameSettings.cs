@@ -10,5 +10,11 @@ namespace TATM.SCB.models
     {
         public List<Player> players;
         public List<GameBoard> maps;
+
+        public GameSettings()
+        {
+            players = new List<Player>();
+            maps = new List<GameBoard>();
+        }
     }
 }

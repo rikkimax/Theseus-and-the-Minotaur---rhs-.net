@@ -40,6 +40,11 @@ namespace TATM.ME
             board.cells.Add(new Cell(1, 2, new Border(false, true), false, false));
             board.cells.Add(new Cell(2, 2, new Border(true, true), false, false));
 
+            GameSettings settings = new GameSettings();
+            settings.maps.Add(board);
+            Storage.settings = settings;
+            Storage.Save();
+
             gameBoardCtrl1.init(DisplayMode.Play, board);
             gameBoardCtrl1.EntityTouched += new GameBoardCtrl.EntityClashDelegate(EntityClashEvent);
             gameBoardCtrl1.TheseusExited += new GameBoardCtrl.EntityClashDelegate(EntityExited);
