@@ -16,12 +16,15 @@ namespace TATM.SCB
             return Type.GetType("Mono.Runtime") != null;
         }
 
-        public static string GetFilename()
+        public static string GetFilePath ()
         {
-            if (IsRunningOnMono())
-                return "~/TATMRHS/data.xml";
-            else
-                return "%APPDATA%/TATMRHS/data.xml";
+            string path;
+            if (IsRunningOnMono()) {
+                return "~/TATMRHS/";
+            } else {
+                path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                return System.IO.Path.Combine(path, "TATMRHS");
+            }
         }
 
         public static void Save()
@@ -43,12 +46,11 @@ namespace TATM.SCB
 
         public static GameSettings Load()
         {
+            String filePath = GetFilePath();
+            string filename = System.IO.Path.Combine(filePath, "data.xml");
             CheckDirectory();
-
-            String filename;
             // Create an instance of the XmlSerializer.
             XmlSerializer serializer = new XmlSerializer(typeof(GameSettings));
-            filename = GetFilename();
             // Reading the XML document requires a FileStream.
             Stream reader = new FileStream(filename, FileMode.Open);
             // Call the Deserialize method to restore the object's state.
@@ -59,6 +61,11 @@ namespace TATM.SCB
         public static void CheckDirectory() {
             // does directory exist?
             // if not create
+            String filename = GetFilename();
+            //if the file doesnt exist
+            if (!File.Exists(filename)) {
+                System.IO.Directory.CreateDirectory(filename);
+            }
         }
     }
 }
