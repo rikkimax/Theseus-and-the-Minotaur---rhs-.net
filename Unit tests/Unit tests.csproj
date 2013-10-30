@@ -40,9 +40,24 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="xunit">
+      <HintPath>..\..\Theseus and the Minotaur RHS.bk\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test\MoveAI.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared code base\Shared code base.csproj">
+      <Project>{dc0197a6-9c34-4de3-a014-78d46d4121a8}</Project>
+      <Name>Shared code base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared gui code base\Shared gui code base.csproj">
+      <Project>{75c447fc-1f68-4c40-a5f9-a20e36fd273a}</Project>
+      <Name>Shared gui code base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -57,4 +72,5 @@
     <xunit Assembly="Shared code base\bin\Debug\Shared code base.dll" />
     <xunit Assembly="Shared gui code base\bin\Debug\Shared gui code base.dll" />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

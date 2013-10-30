@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared gui code base", "Sha
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit tests", "Unit tests\Unit tests.csproj", "{1A7EE5FF-4D2F-4F80-AD7F-7B73105E73CB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DC0197A6-9C34-4DE3-A014-78D46D4121A8} = {DC0197A6-9C34-4DE3-A014-78D46D4121A8}
+		{75C447FC-1F68-4C40-A5F9-A20E36FD273A} = {75C447FC-1F68-4C40-A5F9-A20E36FD273A}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FB6B8A39-559C-4F7D-8FE1-03727C7959CB}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,6 +33,45 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{661AD2
 		Build.proj = Build.proj
 		.build\MSBuild.Community.Tasks.dll = .build\MSBuild.Community.Tasks.dll
 		.build\MSBuild.Community.Tasks.targets = .build\MSBuild.Community.Tasks.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{E149B8B1-CB8E-4174-A128-7E9D8203F285}"
+	ProjectSection(SolutionItems) = preProject
+		Main executable\Form.cs = Main executable\Form.cs
+		Main executable\Form.Designer.cs = Main executable\Form.Designer.cs
+		Main executable\Form.resx = Main executable\Form.resx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scb", "scb", "{79F47E96-AF49-4262-8EEF-423D89579085}"
+	ProjectSection(SolutionItems) = preProject
+		Shared code base\scb\constants.cs = Shared code base\scb\constants.cs
+		Shared code base\scb\MoveAI.cs = Shared code base\scb\MoveAI.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "models", "models", "{56FCF12B-DD93-4334-A88C-6B80126195F2}"
+	ProjectSection(SolutionItems) = preProject
+		Shared code base\scb\models\Border.cs = Shared code base\scb\models\Border.cs
+		Shared code base\scb\models\Cell.cs = Shared code base\scb\models\Cell.cs
+		Shared code base\scb\models\Entity.cs = Shared code base\scb\models\Entity.cs
+		Shared code base\scb\models\GameBoard.cs = Shared code base\scb\models\GameBoard.cs
+		Shared code base\scb\models\GameSettings.cs = Shared code base\scb\models\GameSettings.cs
+		Shared code base\scb\models\Player.cs = Shared code base\scb\models\Player.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sgcb", "sgcb", "{ED9D7DD6-230E-40C8-8E3C-E03291CB4B4D}"
+	ProjectSection(SolutionItems) = preProject
+		Shared gui code base\sgcb\CellCtrl.xaml = Shared gui code base\sgcb\CellCtrl.xaml
+		Shared gui code base\sgcb\CellCtrl.xaml.cs = Shared gui code base\sgcb\CellCtrl.xaml.cs
+		Shared gui code base\sgcb\exit.png = Shared gui code base\sgcb\exit.png
+		Shared gui code base\sgcb\GameBoardCtrl.xaml = Shared gui code base\sgcb\GameBoardCtrl.xaml
+		Shared gui code base\sgcb\GameBoardCtrl.xaml.cs = Shared gui code base\sgcb\GameBoardCtrl.xaml.cs
+		Shared gui code base\sgcb\minotaur.png = Shared gui code base\sgcb\minotaur.png
+		Shared gui code base\sgcb\theseus.png = Shared gui code base\sgcb\theseus.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8CAC6E5C-E1A4-4EDF-A1FA-2D013D69FA02}"
+	ProjectSection(SolutionItems) = preProject
+		Unit tests\test\MoveAI.cs = Unit tests\test\MoveAI.cs
 	EndProjectSection
 EndProject
 Global
@@ -56,5 +99,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{79F47E96-AF49-4262-8EEF-423D89579085} = {E149B8B1-CB8E-4174-A128-7E9D8203F285}
+		{ED9D7DD6-230E-40C8-8E3C-E03291CB4B4D} = {E149B8B1-CB8E-4174-A128-7E9D8203F285}
+		{8CAC6E5C-E1A4-4EDF-A1FA-2D013D69FA02} = {E149B8B1-CB8E-4174-A128-7E9D8203F285}
+		{56FCF12B-DD93-4334-A88C-6B80126195F2} = {79F47E96-AF49-4262-8EEF-423D89579085}
 	EndGlobalSection
 EndGlobal
