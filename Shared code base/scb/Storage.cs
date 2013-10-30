@@ -26,13 +26,17 @@ namespace TATM.SCB
 
         public static void Save()
         {
-            String filename;
-            XmlSerializer x = new XmlSerializer(settings.GetType());
-            x.Serialize(Console.Out, settings.GetType());
-            filename = GetFilename();
-            StreamWriter file = new StreamWriter(@filename);
-            x.Serialize(file, settings);
-            file.Close();
+            try
+            {
+                XmlSerializer ser = new XmlSerializer(typeof(GameSettings));
+                TextWriter writer = new StreamWriter("h:\\test.txt");
+                ser.Serialize(writer, settings);
+                writer.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public static GameSettings Load()
