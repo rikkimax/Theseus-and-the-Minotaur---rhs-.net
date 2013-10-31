@@ -88,7 +88,7 @@ namespace TATM.ME
             this.ClientSize = new System.Drawing.Size(684, 390);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form";
-            this.Text = "Form";
+            this.Text = "Theseus and the Minotaur - Right Hand Side";
             this.Load += new System.EventHandler(this.Form_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
