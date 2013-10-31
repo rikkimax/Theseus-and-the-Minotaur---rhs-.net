@@ -30,39 +30,43 @@ namespace TATM.SGCB
         {
             // set gameboard to this
             this.gameboard = gameboard;
-
+            InvalidateVisual();
         }
         protected GameBoardCtrl gameboard;
 
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            MapList.Items.Clear();
-
-            // foreach map list add to list
-            //  MapList.Items.Add("map id");
-            foreach (GameBoard map in Storage.settings.maps)
+            if (gameboard != null)
             {
-                MapList.Items.Add(map.level);
-            }
+                MapList.Items.Clear();
 
-            
+                // foreach map list add to list
+                //  MapList.Items.Add("map id");
+                foreach (GameBoard map in Storage.settings.maps)
+                {
+                    MapList.Items.Add(map.level);
+                }
+
+            }
             base.OnRender(drawingContext);
         }
 
         private void MapList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // e.AddedItems gets the items selected
-            // tell gameboardctrl new gameboard
-            if (e.AddedItems.Count == 1)
+            if (gameboard != null)
             {
-                GameBoard board = Storage.settings.maps[(int)MapList.SelectedValue];
-                gameboard.init(DisplayMode.Play, board);
-            }
-            
-            // show gameboardctrl
-            gameboard.Visibility = Visibility.Visible;
+                // e.AddedItems gets the items selected
+                // tell gameboardctrl new gameboard
+                if (MapList.SelectedItem != null)
+                {
+                    GameBoard board = Storage.settings.maps[int.Parse(MapList.SelectedItem.ToString())];
+                    gameboard.init(DisplayMode.Play, board);
 
+                    // show gameboardctrl
+                    InvalidateVisual();
+                }
+            }
         }
 
         private void PlayerBtn_Click(object sender, RoutedEventArgs e)
@@ -82,7 +86,8 @@ namespace TATM.SGCB
             // if gameboard is not null
             if (gameboard != null)
             {
-                gameboard.Visibility = Visibility.Hidden;
+                Storage.Load();
+                InvalidateVisual();
             }
 
             // get the storage manager to load
@@ -108,6 +113,15 @@ namespace TATM.SGCB
             
             }
             // leave for now
+        }
+
+        protected override void OnGotFocus(RoutedEventArgs e)
+        {
+            if (gameboard != null)
+            {
+                gameboard.Focus();
+            }
+            base.OnGotFocus(e);
         }
     }
 }

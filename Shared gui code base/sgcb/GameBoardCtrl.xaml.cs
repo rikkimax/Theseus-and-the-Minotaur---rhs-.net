@@ -43,11 +43,16 @@ namespace TATM.SGCB
          */
         public void init(DisplayMode mode, GameBoard board)
         {
+            entities.Clear();
+
             entities.Add(EntityType.Theseus, new Point(board.theseus.startX, board.theseus.startY));
             entities.Add(EntityType.Minotaur, new Point(board.minotaur.startX, board.minotaur.startY));
 
             this.mode = mode;
             this.board = board;
+
+            InvalidateVisual();
+            Focus();
         }
 
         public void reinit()

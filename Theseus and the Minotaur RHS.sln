@@ -66,6 +66,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sgcb", "sgcb", "{ED9D7DD6-2
 		Shared gui code base\sgcb\exit.png = Shared gui code base\sgcb\exit.png
 		Shared gui code base\sgcb\GameBoardCtrl.xaml = Shared gui code base\sgcb\GameBoardCtrl.xaml
 		Shared gui code base\sgcb\GameBoardCtrl.xaml.cs = Shared gui code base\sgcb\GameBoardCtrl.xaml.cs
+		Shared gui code base\sgcb\GameConfigCtrl.xaml = Shared gui code base\sgcb\GameConfigCtrl.xaml
+		Shared gui code base\sgcb\GameConfigCtrl.xaml.cs = Shared gui code base\sgcb\GameConfigCtrl.xaml.cs
 		Shared gui code base\sgcb\minotaur.png = Shared gui code base\sgcb\minotaur.png
 		Shared gui code base\sgcb\theseus.png = Shared gui code base\sgcb\theseus.png
 	EndProjectSection

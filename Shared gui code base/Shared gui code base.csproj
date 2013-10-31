@@ -57,6 +57,9 @@
     <Compile Include="sgcb\GameBoardCtrl.xaml.cs">
       <DependentUpon>GameBoardCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="sgcb\GameConfigCtrl.xaml.cs">
+      <DependentUpon>GameConfigCtrl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="sgcb\CellCtrl.xaml">
@@ -64,6 +67,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="sgcb\GameBoardCtrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="sgcb\GameConfigCtrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -26,7 +26,7 @@ namespace TATM.SCB
             else
             {
                 path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                return System.IO.Path.Combine(path, "TATMRHS");
+                return path + "/TATMRHS";
             }
         }
 
@@ -36,8 +36,7 @@ namespace TATM.SCB
 
             try
             {
-                String filePath = GetFilePath();
-                string filename = System.IO.Path.Combine(filePath, "data.xml");
+                string filename = GetFilePath() + "/data.xml";
                 XmlSerializer ser = new XmlSerializer(typeof(GameSettings));
                 TextWriter writer = new StreamWriter(filename);
                 ser.Serialize(writer, settings);
@@ -51,15 +50,22 @@ namespace TATM.SCB
 
         public static GameSettings Load()
         {
-            String filePath = GetFilePath();
-            string filename = System.IO.Path.Combine(filePath, "data.xml");
-            CheckDirectory();
-            // Create an instance of the XmlSerializer.
-            XmlSerializer serializer = new XmlSerializer(typeof(GameSettings));
-            // Reading the XML document requires a FileStream.
-            Stream reader = new FileStream(filename, FileMode.Open);
-            // Call the Deserialize method to restore the object's state.
-            settings = (GameSettings)serializer.Deserialize(reader);
+            string filename = GetFilePath() + "/data.xml";
+
+            if (File.Exists(filename))
+            {
+                CheckDirectory();
+                // Create an instance of the XmlSerializer.
+                XmlSerializer serializer = new XmlSerializer(typeof(GameSettings));
+                // Reading the XML document requires a FileStream.
+                Stream reader = new FileStream(filename, FileMode.Open);
+                // Call the Deserialize method to restore the object's state.
+                settings = (GameSettings)serializer.Deserialize(reader);
+            }
+            else
+            {
+                settings = null;
+            }
             return settings;
         }
 
@@ -69,7 +75,7 @@ namespace TATM.SCB
             // if not create
             String filePath = GetFilePath();
             //if the file doesnt exist
-            if (!File.Exists(filePath))
+            if (!Directory.Exists(filePath))
             {
                 System.IO.Directory.CreateDirectory(filePath);
             }
