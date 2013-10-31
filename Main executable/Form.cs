@@ -12,9 +12,9 @@ using TATM.SGCB;
 
 namespace TATM.ME
 {
-    public partial class Form : System.Windows.Forms.Form
+    public partial class PlayForm : Form
     {
-        public Form()
+        public PlayForm()
         {
             InitializeComponent();
         }
@@ -81,6 +81,7 @@ namespace TATM.ME
             //gameBoardCtrl1.init(DisplayMode.Play, board);
             gameBoardCtrl1.EntityTouched += new GameBoardCtrl.EntityClashDelegate(EntityClashEvent);
             gameBoardCtrl1.TheseusExited += new GameBoardCtrl.EntityClashDelegate(EntityExited);
+            gameConfigCtrl1.RunPlayerForm += new GameConfigCtrl.RunPlayerFormDelegate(PlayerFormShow);
 
             Width = Width + 1;
             Width = Width - 1;
@@ -106,6 +107,20 @@ namespace TATM.ME
             {
                 gameConfigCtrl1.SetLevel(gameConfigCtrl1.GetLevel() + 1);
             }
+        }
+
+        protected PlayerForm playerForm;
+
+        public void SetPlayerForm(PlayerForm value)
+        {
+            playerForm = value;
+        }
+
+        void PlayerFormShow()
+        {
+            Hide();
+            Visible = false;
+            playerForm.Visible = true;
         }
     }
 }

@@ -21,6 +21,9 @@ namespace TATM.SGCB
     /// </summary>
     public partial class GameConfigCtrl : UserControl
     {
+        public delegate void RunPlayerFormDelegate();
+        public event RunPlayerFormDelegate RunPlayerForm;
+
         public GameConfigCtrl()
         {
             InitializeComponent();
@@ -97,6 +100,7 @@ namespace TATM.SGCB
             */
             // show new window
             // leave for now
+            RunPlayerForm();
         }
 
         private void LoadBtn_Click(object sender, RoutedEventArgs e)

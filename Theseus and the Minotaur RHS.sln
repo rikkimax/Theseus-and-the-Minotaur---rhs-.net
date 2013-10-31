@@ -40,6 +40,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{E149B8B1
 		Main executable\Form.cs = Main executable\Form.cs
 		Main executable\Form.Designer.cs = Main executable\Form.Designer.cs
 		Main executable\Form.resx = Main executable\Form.resx
+		Main executable\PlayerForm.cs = Main executable\PlayerForm.cs
+		Main executable\PlayerForm.Designer.cs = Main executable\PlayerForm.Designer.cs
+		Main executable\PlayerForm.resx = Main executable\PlayerForm.resx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scb", "scb", "{79F47E96-AF49-4262-8EEF-423D89579085}"

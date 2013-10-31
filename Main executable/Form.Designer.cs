@@ -2,7 +2,7 @@
 
 namespace TATM.ME
 {
-    partial class Form
+    partial class PlayForm
     {
         /// <summary>
         /// Required designer variable.
@@ -99,12 +99,6 @@ namespace TATM.ME
         }
 
         #endregion
-
-        [STAThreadAttribute]
-        public static void Main()
-        {
-            new Form().ShowDialog();
-        }
 
         private System.Windows.Forms.Integration.ElementHost elementHost1;
         private SGCB.GameBoardCtrl gameBoardCtrl1;
