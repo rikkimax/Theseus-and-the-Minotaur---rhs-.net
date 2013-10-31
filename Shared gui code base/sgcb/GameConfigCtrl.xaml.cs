@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TATM.SCB;
+using TATM.SCB.models;
 
 namespace TATM.SGCB
 {
@@ -27,7 +29,11 @@ namespace TATM.SGCB
         public void init(GameBoardCtrl gameboard)
         {
             // set gameboard to this
+            this.gameboard = gameboard;
+
         }
+        protected GameBoardCtrl gameboard;
+
 
         protected override void OnRender(DrawingContext drawingContext)
         {
@@ -35,6 +41,11 @@ namespace TATM.SGCB
 
             // foreach map list add to list
             //  MapList.Items.Add("map id");
+            foreach (GameBoard map in Storage.settings.maps)
+            {
+                MapList.Items.Add(map.level);
+            }
+
             
             base.OnRender(drawingContext);
         }
@@ -43,13 +54,25 @@ namespace TATM.SGCB
         {
             // e.AddedItems gets the items selected
             // tell gameboardctrl new gameboard
+            if (e.AddedItems.Count == 1)
+            {
+                GameBoard board = Storage.settings.maps[(int)MapList.SelectedValue];
+                gameboard.init(DisplayMode.Play, board);
+            }
+            
             // show gameboardctrl
+            gameboard.Visibility = Visibility.Visible;
+
         }
 
         private void PlayerBtn_Click(object sender, RoutedEventArgs e)
         {
             // if gameboard is not null
-
+            /*if (gameboard != null)
+            {
+                //leave for now
+            }
+            */
             // show new window
             // leave for now
         }
@@ -57,6 +80,10 @@ namespace TATM.SGCB
         private void LoadBtn_Click(object sender, RoutedEventArgs e)
         {
             // if gameboard is not null
+            if (gameboard != null)
+            {
+                gameboard.Visibility = Visibility.Hidden;
+            }
 
             // get the storage manager to load
             // tell the gameboard to hide
@@ -65,6 +92,10 @@ namespace TATM.SGCB
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             // if gameboard is not null
+            if (gameboard != null)
+            {
+                Storage.Save();
+            }
 
             // get the storage manager to save.
         }
@@ -72,7 +103,10 @@ namespace TATM.SGCB
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             // if gameboard is not null
-
+            if (gameboard != null)
+            { 
+            
+            }
             // leave for now
         }
     }
