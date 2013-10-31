@@ -88,13 +88,15 @@ namespace TATM.ME
 
         public void EntityClashEvent()
         {
+            // Theseus and Minotaur has been caught.
+
             System.Console.WriteLine("Dinner time!");
             gameBoardCtrl1.reinit();
         }
 
         public void EntityExited()
         {
-            System.Console.WriteLine("exited");
+            // Theseus has exited the level.
             if (gameConfigCtrl1.GetLevel() + 1 >= Storage.settings.maps.Count)
             {
                 gameBoardCtrl1.SetBoard(null);
