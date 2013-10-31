@@ -46,6 +46,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scb", "scb", "{79F47E96-AF4
 	ProjectSection(SolutionItems) = preProject
 		Shared code base\scb\constants.cs = Shared code base\scb\constants.cs
 		Shared code base\scb\MoveAI.cs = Shared code base\scb\MoveAI.cs
+		Shared code base\scb\Storage.cs = Shared code base\scb\Storage.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "models", "models", "{56FCF12B-DD93-4334-A88C-6B80126195F2}"
