@@ -109,18 +109,9 @@ namespace TATM.ME
             }
         }
 
-        protected PlayerForm playerForm;
-
-        public void SetPlayerForm(PlayerForm value)
-        {
-            playerForm = value;
-        }
-
         void PlayerFormShow()
         {
-            Hide();
-            Visible = false;
-            playerForm.Visible = true;
+            Close();
         }
     }
 }
