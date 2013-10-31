@@ -82,6 +82,7 @@ namespace TATM.SGCB
         public void SetBoard(GameBoard board)
         {
             this.board = board;
+            InvalidateVisual();
         }
 
         private byte cellsX;
@@ -192,6 +193,13 @@ namespace TATM.SGCB
                 location = (int)((entities[EntityType.Minotaur].Y * cellsX) + entities[EntityType.Minotaur].X);
                 cells[location].withEntity = EntityType.Minotaur;
             }
+
+            if (board == null)
+            {
+                grid.Children.Clear();
+                cells.Clear();
+            }
+
             base.OnRender(drawingContext);
         }
 

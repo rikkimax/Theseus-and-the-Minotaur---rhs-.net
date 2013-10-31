@@ -60,13 +60,31 @@ namespace TATM.SGCB
                 // tell gameboardctrl new gameboard
                 if (MapList.SelectedItem != null)
                 {
-                    GameBoard board = Storage.settings.maps[int.Parse(MapList.SelectedItem.ToString())];
+                    level = int.Parse(MapList.SelectedItem.ToString());
+                    GameBoard board = Storage.settings.maps[level];
                     gameboard.init(DisplayMode.Play, board);
 
                     // show gameboardctrl
                     InvalidateVisual();
                 }
             }
+        }
+
+        protected int level;
+
+        public void SetLevel(int level)
+        {
+            if (Storage.settings.maps.Count > level && level >= 0)
+            {
+                GameBoard board = Storage.settings.maps[level];
+                gameboard.init(DisplayMode.Play, board);
+                this.level = level;
+            }
+        }
+
+        public int GetLevel()
+        {
+            return level;
         }
 
         private void PlayerBtn_Click(object sender, RoutedEventArgs e)
