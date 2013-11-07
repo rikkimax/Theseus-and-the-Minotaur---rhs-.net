@@ -39,10 +39,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{E149B8B1
 	ProjectSection(SolutionItems) = preProject
 		Main executable\Form.cs = Main executable\Form.cs
 		Main executable\Form.Designer.cs = Main executable\Form.Designer.cs
-		Main executable\Form.resx = Main executable\Form.resx
-		Main executable\PlayerForm.cs = Main executable\PlayerForm.cs
-		Main executable\PlayerForm.Designer.cs = Main executable\PlayerForm.Designer.cs
-		Main executable\PlayerForm.resx = Main executable\PlayerForm.resx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scb", "scb", "{79F47E96-AF49-4262-8EEF-423D89579085}"
@@ -72,6 +68,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sgcb", "sgcb", "{ED9D7DD6-2
 		Shared gui code base\sgcb\GameConfigCtrl.xaml = Shared gui code base\sgcb\GameConfigCtrl.xaml
 		Shared gui code base\sgcb\GameConfigCtrl.xaml.cs = Shared gui code base\sgcb\GameConfigCtrl.xaml.cs
 		Shared gui code base\sgcb\minotaur.png = Shared gui code base\sgcb\minotaur.png
+		Main executable\PlayerForm.cs = Main executable\PlayerForm.cs
+		Main executable\PlayerForm.Designer.cs = Main executable\PlayerForm.Designer.cs
 		Shared gui code base\sgcb\theseus.png = Shared gui code base\sgcb\theseus.png
 	EndProjectSection
 EndProject
