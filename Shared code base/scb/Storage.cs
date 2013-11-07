@@ -70,6 +70,7 @@ namespace TATM.SCB
                 Stream reader = new FileStream(filename, FileMode.Open);
                 // Call the Deserialize method to restore the object's state.
                 settings = (GameSettings)serializer.Deserialize(reader);
+                reader.Close();
             }
             else
             {
