@@ -10,6 +10,7 @@ namespace TATM.SCB
     public class Storage
     {
         public static GameSettings settings { get; set; }
+        public static Player currentPlayer { get; set; }
 
         public static bool IsRunningOnMono()
         {

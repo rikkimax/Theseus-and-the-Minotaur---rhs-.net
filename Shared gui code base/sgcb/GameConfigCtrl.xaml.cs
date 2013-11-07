@@ -47,9 +47,12 @@ namespace TATM.SGCB
 
                 // foreach map list add to list
                 //  MapList.Items.Add("map id");
+                int i = -1;
                 foreach (GameBoard map in Storage.settings.maps)
                 {
-                    MapList.Items.Add(map.level);
+                    if (Storage.currentPlayer == null || i < Storage.currentPlayer.unlockMapLevel)
+                        MapList.Items.Add(map.level);
+                    i++;
                 }
 
             }
@@ -83,6 +86,7 @@ namespace TATM.SGCB
                 GameBoard board = Storage.settings.maps[level];
                 gameboard.init(DisplayMode.Play, board);
                 this.level = level;
+                InvalidateVisual();
             }
         }
 
