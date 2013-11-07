@@ -83,7 +83,7 @@ namespace TATM.ME
 
         void PlayerFormShow()
         {
-            Close();
+            Visible = false;
         }
     }
 }
