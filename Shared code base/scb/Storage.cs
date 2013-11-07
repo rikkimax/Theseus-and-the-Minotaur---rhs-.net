@@ -34,10 +34,14 @@ namespace TATM.SCB
         public static void Save()
         {
             CheckDirectory();
+            string filename = "data.xml";
+            if (!File.Exists(filename))
+            {
+                filename = GetFilePath() + "/data.xml";
+            }
 
             try
             {
-                string filename = GetFilePath() + "/data.xml";
                 XmlSerializer ser = new XmlSerializer(typeof(GameSettings));
                 TextWriter writer = new StreamWriter(filename);
                 ser.Serialize(writer, settings);
@@ -52,6 +56,10 @@ namespace TATM.SCB
         public static GameSettings Load()
         {
             string filename = GetFilePath() + "/data.xml";
+            if (!File.Exists(filename))
+            {
+                filename = "data.xml";
+            }
 
             if (File.Exists(filename))
             {
