@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -129,12 +130,17 @@ namespace TATM.SGCB
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            // if gameboard is not null
-            if (gameboard != null)
-            { 
-            
+            Process p = new Process();
+            p.StartInfo.FileName = "editor.exe";
+            try
+            {
+                p.Start();
+                p.WaitForExit();
             }
-            // leave for now
+            catch (System.ComponentModel.Win32Exception w32e)
+            {
+                MessageBox.Show("Could not open editor", null, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         protected override void OnGotFocus(RoutedEventArgs e)
