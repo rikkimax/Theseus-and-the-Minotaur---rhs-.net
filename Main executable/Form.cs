@@ -32,6 +32,12 @@ namespace TATM.ME
             Width = Width - 1;
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            Environment.Exit(0);
+        }
+
         public void EntityClashEvent()
         {
             // Theseus and Minotaur has been caught.
