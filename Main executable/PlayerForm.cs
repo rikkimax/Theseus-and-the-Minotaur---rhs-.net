@@ -21,6 +21,7 @@ namespace TATM.ME
             InitializeComponent();
             playerCtrl1.RunPlayForm += new PlayerCtrl.RunPlayFormDelegate(runMainForm);
 
+            Storage.playerName = "Richard";
             Storage.Load();
         }
 
