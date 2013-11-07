@@ -24,10 +24,14 @@ namespace TATM.SGCB
     {
         List<CellCtrl> cells;
         Dictionary<EntityType, Point> entities;
+        public double time { get; set; }
 
         public delegate void EntityClashDelegate();
         public event EntityClashDelegate EntityTouched;
         public event EntityClashDelegate TheseusExited;
+
+        public delegate void MoveTakenDelegate();
+        public event MoveTakenDelegate MoveTaken;
 
         public GameBoardCtrl()
         {
@@ -50,6 +54,7 @@ namespace TATM.SGCB
 
             this.mode = mode;
             this.board = board;
+            this.time = (double)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds;
 
             InvalidateVisual();
             Focus();
@@ -59,6 +64,7 @@ namespace TATM.SGCB
         {
             entities[EntityType.Theseus] = new Point(board.theseus.startX, board.theseus.startY);
             entities[EntityType.Minotaur] = new Point(board.minotaur.startX, board.minotaur.startY);
+            this.time = (double)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds;
             InvalidateVisual();
         }
 
@@ -250,6 +256,7 @@ namespace TATM.SGCB
                 {
                     if (MakeMove.TheseusTurn(ref board, ref entities, directionToMove))
                     {
+                        MoveTaken();
                         // TODO redraw
                         InvalidateVisual();
                     }

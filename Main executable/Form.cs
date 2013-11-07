@@ -26,6 +26,7 @@ namespace TATM.ME
             //gameBoardCtrl1.init(DisplayMode.Play, board);
             gameBoardCtrl1.EntityTouched += new GameBoardCtrl.EntityClashDelegate(EntityClashEvent);
             gameBoardCtrl1.TheseusExited += new GameBoardCtrl.EntityClashDelegate(EntityExited);
+            gameBoardCtrl1.MoveTaken += new GameBoardCtrl.MoveTakenDelegate(MoveTaken);
             gameConfigCtrl1.RunPlayerForm += new GameConfigCtrl.RunPlayerFormDelegate(PlayerFormShow);
 
             Width = Width + 1;
@@ -41,7 +42,7 @@ namespace TATM.ME
         public void EntityClashEvent()
         {
             // Theseus and Minotaur has been caught.
-
+            numberOfMoves = 0;
             System.Console.WriteLine("Dinner time!");
             gameBoardCtrl1.reinit();
         }
@@ -51,6 +52,12 @@ namespace TATM.ME
             if (Storage.currentPlayer != null)
             {
                 Storage.currentPlayer.unlockMapLevel = (uint)gameConfigCtrl1.GetLevel() + 1;
+                double time = (double)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds;
+                if (time - gameBoardCtrl1.time < Storage.currentPlayer.highscore || Storage.currentPlayer.highscore == 0)
+                {
+                    Storage.currentPlayer.highscore = (time - gameBoardCtrl1.time) / numberOfMoves;
+                }
+                numberOfMoves = 0;
                 Storage.Save();
                 gameConfigCtrl1.SetLevel((int)Storage.currentPlayer.unlockMapLevel);
             }
@@ -65,6 +72,13 @@ namespace TATM.ME
             {
                 gameConfigCtrl1.SetLevel((int)Storage.currentPlayer.unlockMapLevel);
             }
+        }
+
+        protected uint numberOfMoves;
+
+        public void MoveTaken()
+        {
+            numberOfMoves++;
         }
 
         void PlayerFormShow()

@@ -12,7 +12,7 @@ namespace TATM.SCB.models
         [XmlAttribute]
         public string name;
         [XmlAttribute]
-        public float highscore; // time
+        public double highscore; // time
         [XmlAttribute]
         public uint unlockMapLevel;
 
