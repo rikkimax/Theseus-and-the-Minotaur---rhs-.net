@@ -55,7 +55,7 @@ namespace TATM.ME
                 double time = (double)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds;
                 if (time - gameBoardCtrl1.time < Storage.currentPlayer.highscore || Storage.currentPlayer.highscore == 0)
                 {
-                    Storage.currentPlayer.highscore = (time - gameBoardCtrl1.time) / numberOfMoves;
+                    Storage.currentPlayer.highscore = ((time - gameBoardCtrl1.time) / numberOfMoves) * gameBoardCtrl1.GetBoard().cells.Count;
                 }
                 numberOfMoves = 0;
                 Storage.Save();
