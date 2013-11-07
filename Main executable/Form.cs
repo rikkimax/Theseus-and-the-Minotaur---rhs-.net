@@ -44,20 +44,20 @@ namespace TATM.ME
         {
             if (Storage.currentPlayer != null)
             {
-                Storage.currentPlayer.unlockMapLevel = (uint)gameConfigCtrl1.GetLevel();
+                Storage.currentPlayer.unlockMapLevel = (uint)gameConfigCtrl1.GetLevel() + 1;
                 Storage.Save();
                 gameConfigCtrl1.SetLevel((int)Storage.currentPlayer.unlockMapLevel);
             }
             
             // Theseus has exited the level.
-            if (gameConfigCtrl1.GetLevel() + 1 >= Storage.settings.maps.Count)
+            if (Storage.currentPlayer.unlockMapLevel >= Storage.settings.maps.Count)
             {
                 gameBoardCtrl1.SetBoard(null);
                 // end of maps
             }
             else
             {
-                gameConfigCtrl1.SetLevel(gameConfigCtrl1.GetLevel() + 1);
+                gameConfigCtrl1.SetLevel((int)Storage.currentPlayer.unlockMapLevel);
             }
         }
 
