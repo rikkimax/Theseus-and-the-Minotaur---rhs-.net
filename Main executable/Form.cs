@@ -53,7 +53,7 @@ namespace TATM.ME
             {
                 Storage.currentPlayer.unlockMapLevel = (uint)gameConfigCtrl1.GetLevel() + 1;
                 double time = (double)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds;
-                double value = ((time - gameBoardCtrl1.time) / numberOfMoves) * gameBoardCtrl1.GetBoard().cells.Count;
+                double value = (numberOfMoves / (time - gameBoardCtrl1.time)) * gameBoardCtrl1.GetBoard().cells.Count;
                 if (value > Storage.currentPlayer.highscore || Storage.currentPlayer.highscore == 0)
                 {
                     Storage.currentPlayer.highscore = value;
