@@ -11,6 +11,7 @@ namespace TATM.SCB
     {
         public static GameSettings settings { get; set; }
         public static Player currentPlayer { get; set; }
+        public static string playerName { get; set; }
 
         public static bool IsRunningOnMono()
         {
@@ -125,20 +126,25 @@ namespace TATM.SCB
 
                 settings.maps.Add(board);
 
-                Player player = new Player();
-                player.name = Environment.UserName;
-                settings.players.Add(player);
-
                 Storage.settings = settings;
-                Storage.currentPlayer = player;
-
-                Storage.Save();
             }
 
             Storage.currentPlayer = Storage.settings.players.Find(delegate(Player player)
             {
-                return player.name == Environment.UserName;
+                return player.name == (Storage.playerName == null ? Environment.UserName : Storage.playerName);
             });
+
+            if (Storage.currentPlayer == null)
+            {
+                if (Storage.playerName == null)
+                    Storage.playerName = Environment.UserName;
+                Player player = new Player();
+                player.name = Storage.playerName;
+                settings.players.Add(player);
+                currentPlayer = player;
+            }
+
+            Storage.Save();
 
             return settings;
         }
