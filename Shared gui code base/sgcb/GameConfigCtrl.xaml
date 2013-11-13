@@ -8,7 +8,7 @@
              ">
     <Viewbox>
         <Grid Height="300" Width="100">
-            <Button Content="Edit" Name="EditBtn" RenderTransformOrigin="0.196,0.215" Margin="0,0,0,278" Click="EditBtn_Click"/>
+            <Button Content="Edit" Name="EditBtn" RenderTransformOrigin="0.196,0.215" Margin="0,0,0,278" Click="EditBtn_Click" Height="22" VerticalAlignment="Bottom"/>
             <Button Content="Save" Name="SaveBtn" Margin="0,278,0,0" Click="SaveBtn_Click"/>
             <Button Content="Load" Name="LoadBtn" Margin="0,256,0,22" Click="LoadBtn_Click"/>
             <Button Content="Player" Name="PlayerBtn" Margin="0,234,0,44" Click="PlayerBtn_Click"/>

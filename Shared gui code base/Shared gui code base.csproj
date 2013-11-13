@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -83,6 +84,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Level Designer\TATM.LevelDesigner.csproj">
+      <Project>{6673c865-42b2-4485-804b-fae53187731a}</Project>
+      <Name>TATM.LevelDesigner</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared code base\Shared code base.csproj">
       <Project>{dc0197a6-9c34-4de3-a014-78d46d4121a8}</Project>
       <Name>Shared code base</Name>
@@ -101,6 +106,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

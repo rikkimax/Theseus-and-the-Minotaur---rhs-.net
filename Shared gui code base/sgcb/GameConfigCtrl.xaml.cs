@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TATM.SCB;
 using TATM.SCB.models;
+using TATM.LevelDesigner;
 
 namespace TATM.SGCB
 {
@@ -134,7 +135,7 @@ namespace TATM.SGCB
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            Process p = new Process();
+            /*Process p = new Process();
             p.StartInfo.FileName = "editor.exe";
             try
             {
@@ -144,7 +145,9 @@ namespace TATM.SGCB
             catch (System.ComponentModel.Win32Exception w32e)
             {
                 MessageBox.Show("Could not open editor", null, MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            }*/
+            ViewDesigner designer = new ViewDesigner();
+            designer.show();
         }
 
         protected override void OnGotFocus(RoutedEventArgs e)

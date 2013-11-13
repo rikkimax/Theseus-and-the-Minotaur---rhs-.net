@@ -94,6 +94,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Level Designer\TATM.LevelDesigner.csproj">
+      <Project>{6673c865-42b2-4485-804b-fae53187731a}</Project>
+      <Name>TATM.LevelDesigner</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shared code base\Shared code base.csproj">
       <Project>{dc0197a6-9c34-4de3-a014-78d46d4121a8}</Project>
       <Name>Shared code base</Name>

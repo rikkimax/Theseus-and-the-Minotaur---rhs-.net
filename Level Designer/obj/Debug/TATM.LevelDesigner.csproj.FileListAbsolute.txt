@@ -1,0 +1,20 @@
+H:\- Files\CPIT\PR283\MineV2\TATM.LevelDesigner\bin\Debug\TATM.LevelDesigner.exe.config
+H:\- Files\CPIT\PR283\MineV2\TATM.LevelDesigner\bin\Debug\TATM.LevelDesigner.exe
+H:\- Files\CPIT\PR283\MineV2\TATM.LevelDesigner\bin\Debug\TATM.LevelDesigner.pdb
+H:\- Files\CPIT\PR283\MineV2\TATM.LevelDesigner\obj\Debug\TATM.LevelDesigner.csprojResolveAssemblyReference.cache
+H:\- Files\CPIT\PR283\MineV2\TATM.LevelDesigner\obj\Debug\TATM.LevelDesigner.Properties.Resources.resources
+H:\- Files\CPIT\PR283\MineV2\TATM.LevelDesigner\obj\Debug\TATM.LevelDesigner.ViewDesigner.resources
+H:\- Files\CPIT\PR283\MineV2\TATM.LevelDesigner\obj\Debug\TATM.LevelDesigner.csproj.GenerateResource.Cache
+H:\- Files\CPIT\PR283\MineV2\TATM.LevelDesigner\obj\Debug\TATM.LevelDesigner.exe
+H:\- Files\CPIT\PR283\MineV2\TATM.LevelDesigner\obj\Debug\TATM.LevelDesigner.pdb
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\bin\Debug\TATM.LevelDesigner.exe.config
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\bin\Debug\TATM.LevelDesigner.exe
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\bin\Debug\TATM.LevelDesigner.pdb
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\obj\Debug\TATM.LevelDesigner.csprojResolveAssemblyReference.cache
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\obj\Debug\TATM.LevelDesigner.Properties.Resources.resources
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\obj\Debug\TATM.LevelDesigner.ViewDesigner.resources
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\obj\Debug\TATM.LevelDesigner.csproj.GenerateResource.Cache
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\obj\Debug\TATM.LevelDesigner.exe
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\obj\Debug\TATM.LevelDesigner.pdb
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\bin\Debug\Shared code base.dll
+C:\Users\Reece\Desktop\Theseus-and-the-Minotaur---rhs-.net-master\Level Designer\bin\Debug\Shared code base.pdb
